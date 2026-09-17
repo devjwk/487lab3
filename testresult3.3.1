@@ -1,5 +1,11 @@
+Running: /remote/Xilinx/2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto c970b74d22804b7d85faccd3834f7d7a --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot staged_mac_behav xil_defaultlib.staged_mac -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2020.1
 Time resolution is 1 ps
-relaunch_sim: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 7413.352 ; gain = 0.000 ; free physical = 5497 ; free virtual = 17855
 # proc check_result {test_name expected} {
 #     set actual [get_value -radix hex /staged_mac/MO_AXIS_TDATA]
 #     if {[string tolower $actual] == [string tolower $expected]} {
@@ -43,16 +49,17 @@ PASS: Test2_DoubleOp -> 0x00000002
 # add_force {/staged_mac/SD_AXIS_TDATA} -radix hex {0203 0ns}
 # add_force {/staged_mac/SD_AXIS_TUSER} -radix hex {0 0ns}
 # run 10ns
+# check_result "Test3a_BackToBack1" "00000006"
+PASS: Test3a_BackToBack1 -> 0x00000006
 # add_force {/staged_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
 # add_force {/staged_mac/SD_AXIS_TLAST} -radix hex {1 0ns}
 # add_force {/staged_mac/SD_AXIS_TID} -radix hex {4 0ns}
 # add_force {/staged_mac/SD_AXIS_TDATA} -radix hex {0202 0ns}
 # add_force {/staged_mac/SD_AXIS_TUSER} -radix hex {0 0ns}
 # run 10ns
-# check_result "Test3a_BackToBack1" "00000006"
-FAIL: Test3a_BackToBack1 -> got 0x00000000, expected 0x00000006
+# run 10ns
 # check_result "Test3b_BackToBack2" "00000004"
-FAIL: Test3b_BackToBack2 -> got 0x00000000, expected 0x00000004
+PASS: Test3b_BackToBack2 -> 0x00000004
 # add_force {/staged_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
 # run 50ns
 # add_force {/staged_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
