@@ -1,0 +1,11 @@
+*.jou
+*.log
+*.str
+*.backup.log
+*.backup.jou
+.Xil/
+*.cache/
+*.runs/
+*.sim/
+*.ip_user_files/
+software_testing/workspace/
