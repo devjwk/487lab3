@@ -37,12 +37,6 @@ end conv_mac;
 architecture behavioral of conv_mac is
 
 -- TODO
--- Signal for divide input TDATA to two signed operand 
-signal operand_a : signed(C_DATA_WIDTH-1 downto 0);
-signal operand_b : signed(C_DATA_WIDTH-1 downto 0);
-
---
-
 
 begin
 
