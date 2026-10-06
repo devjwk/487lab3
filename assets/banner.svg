@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" role="img" aria-label="MAC UNITS ON FPGA">
+<title>MAC UNITS ON FPGA</title>
+<style>
+.kick{font:700 15px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:3px;fill:#5EEAD4}
+.title{font:800 56px system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;letter-spacing:1.5px;fill:#ffffff}
+.tag{font:500 21px system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#ffffff;opacity:.86}
+.m{font:500 13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace} .mb{font:700 14px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace} .mbig{font:800 20px system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif} .big{font:800 30px system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif} .term{font:500 15px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.bar{fill:#5EEAD4}
+@keyframes dash{to{stroke-dashoffset:-20}} .loop{animation:dash 1.2s linear infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#042F2E"/><stop offset="1" stop-color="#0F766E"/></linearGradient></defs>
+<rect width="1200" height="280" rx="20" fill="url(#g)"/>
+<rect class="bar" x="64" y="62" width="44" height="5" rx="2.5"/>
+<text x="64" y="100" class="kick">VHDL · AXI-STREAM · ZEDBOARD</text>
+<text x="64" y="158" class="title">MAC UNITS ON FPGA</text>
+<text x="64" y="196" class="tag">One multiply-accumulate, built twice: a state machine</text>
+<text x="64" y="224" class="tag">and a pipeline</text>
+<g transform="translate(810,50)"><rect x="0" y="30" width="70" height="40" rx="8" fill="#0D9488" /><text x="35" y="56" class="mb" text-anchor="middle" fill="#fff">act</text><rect x="0" y="110" width="70" height="40" rx="8" fill="#0F766E" /><text x="35" y="136" class="mb" text-anchor="middle" fill="#fff">weight</text><path d="M70 50 L112 82 M70 130 L112 98" stroke="#fff" stroke-width="2.5" opacity=".7" fill="none"/><circle cx="132" cy="90" r="24" fill="#5EEAD4"/><text x="132" y="100" class="big" text-anchor="middle" fill="#0B1220">×</text><path d="M156 90 h34" stroke="#fff" stroke-width="2.5" opacity=".7"/><circle cx="214" cy="90" r="24" fill="#5EEAD4"/><text x="214" y="100" class="big" text-anchor="middle" fill="#0B1220">+</text><path d="M238 90 h30" stroke="#fff" stroke-width="2.5" opacity=".7"/><rect x="268" y="66" width="72" height="48" rx="8" fill="#115E59" /><text x="304" y="96" class="mb" text-anchor="middle" fill="#fff">acc</text><path d="M304 114 v34 h-90 v-32" fill="none" stroke="#5EEAD4" stroke-width="2.5" stroke-dasharray="5 5" class="loop"/></g>
+</svg>
