@@ -1,15 +1,11 @@
 <div align="center">
 
-# MAC UNITS ON FPGA
+<img src="assets/banner.svg" alt="MAC UNITS ON FPGA — One multiply-accumulate, built twice: a state machine and a pipeline" width="100%">
 
-### One multiply-accumulate, built twice: a state machine and a pipeline
-
-**VHDL · AXI-Stream · ZedBoard**
-
-![RTL](https://img.shields.io/badge/RTL-VHDL-6366F1?style=flat-square)
-![Board](https://img.shields.io/badge/Board-ZedBoard-0F172A?style=flat-square)
-![Vivado](https://img.shields.io/badge/Vivado-2020.1-0891B2?style=flat-square)
-![On-board tests](https://img.shields.io/badge/On--board%20tests-8%20of%208%20pass-F59E0B?style=flat-square)
+![RTL](https://img.shields.io/badge/RTL-VHDL-0F766E?style=flat-square&labelColor=042F2E)
+![Board](https://img.shields.io/badge/Board-ZedBoard-134E4A?style=flat-square&labelColor=042F2E)
+![Vivado](https://img.shields.io/badge/Vivado-2020.1-0D9488?style=flat-square&labelColor=042F2E)
+![On-board tests](https://img.shields.io/badge/On--board%20tests-8%20of%208%20pass-14B8A6?style=flat-square&labelColor=042F2E)
 
 Iowa State University · CprE 487/587 · Lab 3 · Team 06
 
@@ -46,14 +42,16 @@ A convolution output pixel is a sum of products plus a bias. This lab builds the
 ## Where this lab fits
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#0F766E", "primaryTextColor": "#ffffff", "primaryBorderColor": "#042F2E", "lineColor": "#94A3B8", "secondaryColor": "#0F766E", "tertiaryColor": "#042F2E", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
 flowchart LR
     L1["Lab 1 · Train in TensorFlow"] --> L2["Lab 2 · C++ framework"] --> L3["Lab 3 · MAC units"] --> L4["Lab 4 · Quantization"] --> L5["Lab 5 · Hardware integration"]
-    style L3 fill:#6366F1,color:#ffffff,stroke:#4338CA
+    style L3 fill:#5EEAD4,color:#0B1220,stroke:#042F2E
 ```
 
 ## `staged_mac` control
 
 ```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#0F766E", "primaryTextColor": "#ffffff", "primaryBorderColor": "#042F2E", "lineColor": "#94A3B8", "secondaryColor": "#0F766E", "tertiaryColor": "#042F2E", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
 stateDiagram-v2
     [*] --> WAIT_FOR_VALUES
     WAIT_FOR_VALUES --> WAIT_FOR_VALUES: TVALID · TUSER loads bias, otherwise acc += a × w
