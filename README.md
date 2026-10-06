@@ -1,6 +1,31 @@
-# CprE 487/587 Lab 3 — Multiply-Accumulate (MAC) Units on FPGA
+<div align="center">
 
-Two hardware MAC units for CNN inference, written in VHDL with AXI-Stream interfaces and tested on a ZedBoard. This is my personal working copy; the team repository is [zachdixonISU/CPRE-487-Lab03](https://github.com/zachdixonISU/CPRE-487-Lab03).
+# MAC UNITS ON FPGA
+
+### One multiply-accumulate, built twice: a state machine and a pipeline
+
+**VHDL · AXI-Stream · ZedBoard**
+
+![RTL](https://img.shields.io/badge/RTL-VHDL-6366F1?style=flat-square)
+![Board](https://img.shields.io/badge/Board-ZedBoard-0F172A?style=flat-square)
+![Vivado](https://img.shields.io/badge/Vivado-2020.1-0891B2?style=flat-square)
+![On-board tests](https://img.shields.io/badge/On--board%20tests-8%20of%208%20pass-F59E0B?style=flat-square)
+
+Iowa State University · CprE 487/587 · Lab 3 · Team 06
+
+[Overview](#overview) · [Where this lab fits](#where-this-lab-fits) · [My role](#my-role) · [Results](#results) · [Limitations](#limitations-and-next-steps)
+
+</div>
+
+---
+
+> **Where it stands — Complete**  
+> Both units pass simulation, and `staged_mac` passes all on-board tests against a software reference.  
+> Measured throughput is limited by word-at-a-time I/O, not by the MAC itself.
+
+| Simulation | On board | `staged_mac` | Measured |
+| :---: | :---: | :---: | :---: |
+| **12 / 12 pass** | **8 / 8 pass** | **118 LUT · 0 DSP** | **4.5 M MACs/s** |
 
 | | |
 |---|---|
@@ -17,6 +42,26 @@ A convolution output pixel is a sum of products plus a bias. This lab builds the
 - **Problem:** in our C++ model (Lab 2) convolution layers take most of the runtime, and all of that time is multiply-add. Moving the operation to hardware is the first step toward an accelerator.
 - **`staged_mac`:** a state-machine design. It receives 8-bit signed (activation, weight) pairs, accumulates their products in a 32-bit register, and outputs the sum when `TLAST` arrives. A first beat marked with `TUSER` loads the bias instead of multiplying.
 - **`piped_mac`:** a 4-stage pipelined version of the same function that accepts a new pair every cycle.
+
+## Where this lab fits
+
+```mermaid
+flowchart LR
+    L1["Lab 1 · Train in TensorFlow"] --> L2["Lab 2 · C++ framework"] --> L3["Lab 3 · MAC units"] --> L4["Lab 4 · Quantization"] --> L5["Lab 5 · Hardware integration"]
+    style L3 fill:#6366F1,color:#ffffff,stroke:#4338CA
+```
+
+## `staged_mac` control
+
+```mermaid
+stateDiagram-v2
+    [*] --> WAIT_FOR_VALUES
+    WAIT_FOR_VALUES --> WAIT_FOR_VALUES: TVALID · TUSER loads bias, otherwise acc += a × w
+    WAIT_FOR_VALUES --> SEND_RESULT: TLAST
+    SEND_RESULT --> WAIT_FOR_VALUES: TREADY · clear accumulator
+```
+
+Input is accepted only in `WAIT_FOR_VALUES`, so no pair can arrive while a result is still being sent.
 
 ## My role
 
