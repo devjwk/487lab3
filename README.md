@@ -29,6 +29,7 @@ Iowa State University · CprE 487/587 · Lab 3 · Team 06
 | Team | 2 — Zach Dixon, Jongwoo Kim |
 | My role | Board test suite, performance measurement, verification of simulation and synthesis results |
 | Stack | VHDL, Tcl, C++, Vivado/Vitis 2020.1, ZedBoard |
+| Report | [Lab 3 report (PDF)](report/lab3_report_06.pdf) |
 | Next lab | [Lab 5 — hardware integration](https://github.com/devjwk/cpre487lab5) |
 
 ## Overview
