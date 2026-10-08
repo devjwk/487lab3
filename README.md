@@ -113,7 +113,7 @@ software_testing/         on-board test program (src/main.cpp) and Vitis scripts
 simple_interface/         block design with the AXI FIFO and ILA, exported hardware (.xsa)
 results/                  simulation log from September; logs of the October 7 re-run
 submission/               report PDF and source in the layout the handout asks for
-report/                   report PDF
+report/                   report PDF and its Word source
 lab6_template/            course-provided template for a later lab
 ```
 
