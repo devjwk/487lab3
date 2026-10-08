@@ -9,7 +9,7 @@
 
 Iowa State University · CprE 487/587 · Lab 3 · Team 06
 
-[Overview](#overview) · [Where this lab fits](#where-this-lab-fits) · [My role](#my-role) · [Results](#results) · [Limitations](#limitations-and-next-steps)
+[Overview](#overview) · [Where this lab fits](#where-this-lab-fits) · [Team and credits](#team-and-credits) · [Results](#results) · [Limitations](#limitations-and-next-steps)
 
 </div>
 
@@ -25,7 +25,6 @@ Iowa State University · CprE 487/587 · Lab 3 · Team 06
 |---|---|
 | Period | September 2026 · re-verified October 7, 2026 |
 | Team | 2 — Zach Dixon, Jongwoo Kim |
-| My role | Board test suite, performance measurement, verification of simulation and synthesis results |
 | Stack | VHDL, Tcl, C++, Vivado/Vitis 2020.1, ZedBoard |
 | Deliverables | [Lab 3 report (PDF)](submission/lab3_report_06.pdf) · [Source archive (zip)](submission/lab3_src_06.zip) · [Source folder](submission/lab3_src_06) |
 | Next lab | [Lab 5 — hardware integration](https://github.com/devjwk/cpre487lab5) |
@@ -48,16 +47,16 @@ A convolution output pixel is a sum of products plus a bias. This lab builds the
 
 Input is accepted only in `WAIT_FOR_VALUES`, so no pair can arrive while a result is still being sent.
 
-## My role
+## Team and credits
 
-- Extended the on-board test program (`software_testing/src/main.cpp`) to 8 tests that compare hardware output with a software reference, and added timing with `XTime_GetTime`.
-- Re-ran simulation and synthesis for both units and checked every number in our report against the tool output.
-- Found that the per-unit folders still held empty templates while the finished designs sat at the top level, and fixed the repository so both locations match.
-- Wrote the report sections on test strategy, performance, and the maximum useful pipeline depth.
+Lab 3 was done by Zach Dixon and Jongwoo Kim. The team repository is [zachdixonISU/CPRE-487-Lab03](https://github.com/zachdixonISU/CPRE-487-Lab03).
 
-Zach wrote most of the MAC VHDL and the ILA debug setup.
+- **Zach:** developed a `staged_mac` design, the ILA debug setup and the first C++ board test program on the `mac_unit` and `mac_ILA` branches of the team repository.
+- **Jongwoo:** the 8-case board test with timing (`software_testing/src/main.cpp`), the re-runs of simulation and synthesis that the report's numbers are checked against, and the report sections on test strategy, performance and pipeline depth.
+- **This repository** holds the versions of `staged_mac` and `piped_mac` that the report's results come from, as backed up from the lab machine on September 23, 2026. The earlier four-case board program is kept in `previous_lab_data/board_test_4cases/`.
+- Both of us have write access. Corrections to this list are welcome.
 
-## What I learned
+## What I learned (Jongwoo)
 
 **Technical**
 - AXI-Stream handshaking (`TVALID`/`TREADY`), and why the accumulator must be cleared after each group.
@@ -66,7 +65,7 @@ Zach wrote most of the MAC VHDL and the ILA debug setup.
 - Reading Vivado timing and utilization reports.
 
 **Teamwork**
-- Verifying a teammate's design with my own test suite instead of assuming it works.
+- Checking each design with an independent test suite, so that two implementations can be compared on the same inputs.
 - Keeping a lab-machine working copy and a laptop copy in sync through git.
 
 ## Resources used
@@ -112,6 +111,7 @@ staged_mac/, piped_mac/   VHDL, testbenches, Vivado scripts, timing and utilizat
 software_testing/         on-board test program (src/main.cpp) and Vitis scripts
 simple_interface/         block design with the AXI FIFO and ILA, exported hardware (.xsa)
 results/                  simulation log from September; logs of the October 7 re-run
+previous_lab_data/        the earlier four-case board test program
 submission/               report PDF and source in the layout the handout asks for
 report/                   report PDF and its Word source
 lab6_template/            course-provided template for a later lab
