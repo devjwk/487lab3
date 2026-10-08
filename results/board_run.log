@@ -1,0 +1,33 @@
+make: Entering directory '/home/jwk0425/jwk_personal_lab/lab3/software_testing/workspace/sw_test/Debug'
+make: 'sw_test.elf' is up to date.
+make: Leaving directory '/home/jwk0425/jwk_personal_lab/lab3/software_testing/workspace/sw_test/Debug'
+Connecting to hardware server
+No hardware server running, starting a local hardware server instead
+attempting to launch hw_server
+
+****** Xilinx hw_server v2020.1
+  **** Build date : May 27 2020 at 20:33:44
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: hw_server application started
+INFO: Use Ctrl-C to exit hw_server application
+
+INFO: To connect to this hw_server instance use url: TCP:127.0.0.1:3121
+
+Flashing fpga
+INFO: [Hsi 55-2053] elapsed time for repository (/remote/Xilinx/2020.1/Vitis/2020.1/data/embeddedsw) loading 1 seconds
+Done
+Reading from UART, press Ctrl-C to stop
+Running on the ZEDBoard...
+Test1_SingleOp: expected=30 got=30 PASS
+Test2_MultiOp: expected=5 got=5 PASS
+Test3_BackToBack1: expected=12 got=12 PASS
+Test4_BackToBack2: expected=9 got=9 PASS
+Test5_MaxPositive: expected=32258 got=32258 PASS
+Test6_MaxNegative: expected=16384 got=16384 PASS
+Test7_NegativeResult: expected=-16256 got=-16256 PASS
+Test8_ConvScale_N75: expected=450 got=450 PASS
+8/8 tests passed
+Perf: N=75 group took 16.572 us (4.52571 MMAC/s)
+ILA_TeamNumber: expected=6 got=6
+xsdb% 

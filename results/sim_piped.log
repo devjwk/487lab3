@@ -1,0 +1,273 @@
+
+****** Vivado v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source run_tests.tcl
+# open_project tc_piped_mac/tc_piped_mac.xpr
+INFO: [Project 1-313] Project file moved from '/home/jwk0425/487lab3/CPRE-487-Lab03/cpre487-587-lab3-main/piped_mac/vivado/tc_piped_mac' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'impl_1' not found
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.srcs/sources_1', nor could it be found using path '/home/jwk0425/487lab3/CPRE-487-Lab03/cpre487-587-lab3-main/piped_mac/vivado/tc_piped_mac/tc_piped_mac.srcs/sources_1'.
+INFO: [filemgmt 56-1] IPUserFilesDir: Directory not found as '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.ip_user_files'; using path '/home/jwk0425/487lab3/CPRE-487-Lab03/cpre487-587-lab3-main/piped_mac/vivado/tc_piped_mac/tc_piped_mac.ip_user_files' instead.
+# launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'piped_mac' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj piped_mac_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jwk0425/jwk_personal_lab/lab3/piped_mac/hdl/piped_mac.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'piped_mac'
+INFO: [USF-XSim-69] 'compile' step finished in '0' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+xelab -wto 3268aadc16de4f49aa9ac39feeca087f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot piped_mac_behav xil_defaultlib.piped_mac -log elaborate.log
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /remote/Xilinx/2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 3268aadc16de4f49aa9ac39feeca087f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot piped_mac_behav xil_defaultlib.piped_mac -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.piped_mac
+Built simulation snapshot piped_mac_behav
+
+****** Webtalk v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim/xsim.dir/piped_mac_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Wed Oct  7 21:29:19 2026...
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "piped_mac_behav -key {Behavioral:sim_1:Functional:piped_mac} -tclbatch {piped_mac.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+source piped_mac.tcl
+## current_wave_config
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'piped_mac_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+# source ../tb/tcl/piped_mac_tb.tcl
+## relaunch_sim
+Command: launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'piped_mac' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj piped_mac_vhdl.prj
+INFO: [USF-XSim-69] 'compile' step finished in '0' seconds
+Command: launch_simulation -simset sim_1 -mode behavioral
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/jwk0425/jwk_personal_lab/lab3/piped_mac/vivado/tc_piped_mac/tc_piped_mac.sim/sim_1/behav/xsim'
+xelab -wto 3268aadc16de4f49aa9ac39feeca087f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot piped_mac_behav xil_defaultlib.piped_mac -log elaborate.log
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /remote/Xilinx/2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 3268aadc16de4f49aa9ac39feeca087f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot piped_mac_behav xil_defaultlib.piped_mac -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+## proc check_result {test_name expected} {
+##     set actual [get_value -radix hex /piped_mac/MO_AXIS_TDATA]
+##     if {[string tolower $actual] == [string tolower $expected]} {
+##         puts "PASS: $test_name -> 0x$actual"
+##     } else {
+##         puts "FAIL: $test_name -> got 0x$actual, expected 0x$expected"
+##     }
+## }
+## add_force {/piped_mac/ACLK} -radix hex {0 0ns} {1 5000ps} -repeat_every 10000ps
+## add_force {/piped_mac/ARESETN} -radix hex {0 0ns}
+## run 30ns
+## add_force {/piped_mac/ARESETN} -radix hex {1 0ns}
+## add_force {/piped_mac/MO_AXIS_TREADY} -radix hex {1 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0101 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test1_SingleOp" "00000001"
+PASS: Test1_SingleOp -> 0x00000001
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {0 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {2 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0101 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test2_DoubleOp" "00000002"
+PASS: Test2_DoubleOp -> 0x00000002
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {3 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0203 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {4 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0202 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 20ns
+## check_result "Test3a_ZeroGapGroup1" "00000006"
+PASS: Test3a_ZeroGapGroup1 -> 0x00000006
+## run 10ns
+## check_result "Test3b_ZeroGapGroup2" "00000004"
+PASS: Test3b_ZeroGapGroup2 -> 0x00000004
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {0 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {5 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0001 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {1 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {6 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0303 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test4_InitialLoad" "0000000a"
+PASS: Test4_InitialLoad -> 0x0000000a
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {0 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {7 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0101 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {8 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0102 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {9 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0203 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test5_MultiOp" "00000009"
+PASS: Test5_MultiOp -> 0x00000009
+## run 40ns
+## add_force {/piped_mac/MO_AXIS_TREADY} -radix hex {0 0ns}
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {A 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0204 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## run 20ns
+## check_result "Test6a_BackPressureHeld" "00000008"
+PASS: Test6a_BackPressureHeld -> 0x00000008
+## add_force {/piped_mac/MO_AXIS_TREADY} -radix hex {1 0ns}
+## run 10ns
+## check_result "Test6b_BackPressureReleased" "00000008"
+PASS: Test6b_BackPressureReleased -> 0x00000008
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {0 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {B 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0005 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {1 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {C 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## for {set i 1} {$i <= 75} {incr i} {
+##     if {$i == 75} {
+##         add_force {/piped_mac/SD_AXIS_TLAST} -radix hex {1 0ns}
+##     }
+##     add_force {/piped_mac/SD_AXIS_TDATA} -radix hex {0203 0ns}
+##     run 10ns
+## }
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test7_PipelinedStream_N75" "000001c7"
+PASS: Test7_PipelinedStream_N75 -> 0x000001c7
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {D 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {7F7F 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test8_MaxPositive" "00003f01"
+PASS: Test8_MaxPositive -> 0x00003f01
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {E 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {8080 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test9_MaxNegative" "00004000"
+PASS: Test9_MaxNegative -> 0x00004000
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {F 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {0202 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test10_MinimalGroup" "00000004"
+PASS: Test10_MinimalGroup -> 0x00000004
+## run 40ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TLAST}  -radix hex {1 0ns}
+## add_force {/piped_mac/SD_AXIS_TID}    -radix hex {10 0ns}
+## add_force {/piped_mac/SD_AXIS_TDATA}  -radix hex {7F80 0ns}
+## add_force {/piped_mac/SD_AXIS_TUSER}  -radix hex {0 0ns}
+## run 10ns
+## add_force {/piped_mac/SD_AXIS_TVALID} -radix hex {0 0ns}
+## run 30ns
+## check_result "Test11_NegativeResult" "ffffc080"
+PASS: Test11_NegativeResult -> 0xffffc080
+## run 40ns
+# close_sim -force
+INFO: [Simtcl 6-16] Simulation closed
+# exit
+INFO: [Common 17-206] Exiting Vivado at Wed Oct  7 21:29:26 2026...
