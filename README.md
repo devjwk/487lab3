@@ -72,7 +72,7 @@ Lab 3 was done by Zach Dixon and Jongwoo Kim. The team repository is [zachdixonI
 
 - Lab 3 handout and the course hardware template
 - Xilinx AXI4-Stream documentation, Vivado and Vitis 2020.1
-- Our Lab 2 C++ model ([devjwk/487lab2](https://github.com/devjwk/487lab2)) as the reference for expected values
+- Our Lab 2 C++ model ([devjwk/cpre487lab2](https://github.com/devjwk/cpre487lab2)) as the reference for expected values
 
 ## Results
 
