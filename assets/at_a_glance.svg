@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 384" role="img" aria-label="Lab 3 at a glance: tests pass, clock speed, cost, measured throughput">
+<title>Lab 3 at a glance: tests pass, clock speed, cost, measured throughput</title>
+<style>.q{font:700 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.5px}.big{font:800 44px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}.sub{font:500 14px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#475569}.lab{font:500 13px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#0B1220}.val{font:700 13px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#0B1220}.valbig{font:700 16px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#0B1220}.note{font:500 12px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#475569}.tiny{font:600 11px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#475569}</style>
+<rect width="1200" height="384" fill="#ffffff"/>
+<g transform="translate(0,0)">
+<rect width="285" height="384" fill="#F8FAFC"/>
+<rect width="285" height="6" fill="#0F766E"/>
+<text x="18" y="38" class="q" fill="#0F766E">DOES IT COMPUTE CORRECTLY?</text>
+<text x="18" y="92" class="big" fill="#0B1220">25 / 25</text>
+<text x="18" y="118" class="sub">Simulation tests pass for both</text>
+<text x="18" y="136" class="sub">units, re-run on Oct 7, 2026.</text>
+<g transform="translate(18,170)"><rect x="0" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="19" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="38" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="57" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="76" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="95" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="114" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="133" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="152" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="171" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="190" y="0" width="14" height="14" fill="#0F766E"/>
+<rect x="209" y="0" width="14" height="14" fill="#0F766E"/>
+<text x="0" y="34" class="lab">staged_mac  12 / 12</text>
+<rect x="0" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="19" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="38" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="57" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="76" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="95" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="114" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="133" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="152" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="171" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="190" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="209" y="58" width="14" height="14" fill="#5EEAD4"/>
+<rect x="228" y="58" width="14" height="14" fill="#5EEAD4"/>
+<text x="0" y="92" class="lab">piped_mac  13 / 13</text>
+<text x="0" y="140" class="valbig">8 / 8 on the ZedBoard</text>
+<text x="0" y="160" class="note">hardware output vs. a software reference</text></g></g>
+<g transform="translate(305,0)">
+<rect width="285" height="384" fill="#F8FAFC"/>
+<rect width="285" height="6" fill="#0F766E"/>
+<text x="18" y="38" class="q" fill="#0F766E">HOW FAST CAN IT CLOCK?</text>
+<text x="18" y="92" class="big" fill="#0B1220">240 MHz</text>
+<text x="18" y="118" class="sub">staged_mac after place and route.</text>
+<text x="18" y="136" class="sub">The pipelined unit is slower.</text>
+<g transform="translate(18,170)"><text x="0" y="19" class="lab">staged_mac</text>
+<rect x="84" y="4" width="113" height="22" fill="#E2E8F0"/>
+<rect x="84" y="4" width="104.3" height="22" fill="#0F766E"/>
+<text x="205" y="20" class="val">240</text>
+<text x="0" y="57" class="lab">piped_mac</text>
+<rect x="84" y="42" width="113" height="22" fill="#E2E8F0"/>
+<rect x="84" y="42" width="96.8" height="22" fill="#5EEAD4"/>
+<text x="205" y="58" class="val">223</text><text x="0" y="100" class="note">MHz. Both meet the 200 MHz constraint.</text></g></g>
+<g transform="translate(610,0)">
+<rect width="285" height="384" fill="#F8FAFC"/>
+<rect width="285" height="6" fill="#0F766E"/>
+<text x="18" y="38" class="q" fill="#0F766E">WHAT DOES IT COST?</text>
+<text x="18" y="92" class="big" fill="#0B1220">118 LUTs</text>
+<text x="18" y="118" class="sub">staged_mac uses no DSP block;</text>
+<text x="18" y="136" class="sub">piped_mac trades LUTs for one.</text>
+<g transform="translate(18,170)"><text x="0" y="19" class="lab">LUTs</text>
+<rect x="82" y="2" width="107.0" height="13" fill="#0F766E"/><text x="195.0" y="13" class="tiny">118</text>
+<rect x="82" y="17" width="37.2" height="13" fill="#5EEAD4"/><text x="125.2" y="28" class="tiny">41</text>
+<text x="0" y="63" class="lab">Registers</text>
+<rect x="82" y="46" width="37.2" height="13" fill="#0F766E"/><text x="125.2" y="57" class="tiny">41</text>
+<rect x="82" y="61" width="125.2" height="13" fill="#5EEAD4"/><text x="213.2" y="72" class="tiny">138</text>
+<text x="0" y="107" class="lab">DSP blocks</text>
+<rect x="82" y="90" width="1.0" height="13" fill="#0F766E"/><text x="88.0" y="101" class="tiny">0</text>
+<rect x="82" y="105" width="127.0" height="13" fill="#5EEAD4"/><text x="215.0" y="116" class="tiny">1</text>
+<rect x="0" y="133" width="12" height="12" fill="#0F766E"/><text x="18" y="144" class="note">staged_mac</text>
+<rect x="110" y="133" width="12" height="12" fill="#5EEAD4"/><text x="128" y="144" class="note">piped_mac</text></g></g>
+<g transform="translate(915,0)">
+<rect width="285" height="384" fill="#F8FAFC"/>
+<rect width="285" height="6" fill="#0F766E"/>
+<text x="18" y="38" class="q" fill="#0F766E">HOW FAST ON THE BOARD?</text>
+<text x="18" y="92" class="big" fill="#0B1220">4.5 M/s</text>
+<text x="18" y="118" class="sub">MACs per second measured, far</text>
+<text x="18" y="136" class="sub">below the 237 M/s estimate.</text>
+<g transform="translate(18,170)"><text x="0" y="19" class="lab">Measured</text>
+<rect x="98" y="4" width="85" height="22" fill="#E2E8F0"/>
+<rect x="98" y="4" width="21.3" height="22" fill="#5EEAD4"/>
+<text x="191" y="20" class="val">4.5 M/s</text>
+<text x="0" y="57" class="lab">Board CPU</text>
+<rect x="98" y="42" width="85" height="22" fill="#E2E8F0"/>
+<rect x="98" y="42" width="57.6" height="22" fill="#0F766E"/>
+<text x="191" y="58" class="val">58 M/s</text>
+<text x="0" y="95" class="lab">Estimate</text>
+<rect x="98" y="80" width="85" height="22" fill="#E2E8F0"/>
+<rect x="98" y="80" width="77.6" height="22" fill="#0F766E"/>
+<text x="191" y="96" class="val">237 M/s</text>
+<text x="0" y="136" class="note">MACs per second, log-scale bars.</text>
+<text x="0" y="154" class="note">The I/O path is the limit, not the MAC.</text></g></g>
+</svg>

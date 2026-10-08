@@ -15,21 +15,19 @@ Iowa State University · CprE 487/587 · Lab 3 · Team 06
 
 ---
 
-> **Where it stands — Complete**  
-> Both units pass simulation, and `staged_mac` passes all on-board tests against a software reference.  
+> **Where it stands — Complete, re-verified on October 7, 2026**  
+> Simulation, synthesis and the on-board test were all run again and reproduce every number in the report.  
 > Measured throughput is limited by word-at-a-time I/O, not by the MAC itself.
 
-| Simulation | On board | `staged_mac` | Measured |
-| :---: | :---: | :---: | :---: |
-| **12 / 12 pass** | **8 / 8 pass** | **118 LUT · 0 DSP** | **4.5 M MACs/s** |
+<img src="assets/at_a_glance.svg" alt="At a glance: 25 of 25 simulation tests and 8 of 8 board tests pass; staged_mac reaches 240 MHz and piped_mac 223 MHz; staged_mac uses 118 LUTs and no DSP block; measured throughput is 4.5 million MACs per second against an estimate of 237 million" width="100%">
 
 | | |
 |---|---|
-| Period | September 2026 |
+| Period | September 2026 · re-verified October 7, 2026 |
 | Team | 2 — Zach Dixon, Jongwoo Kim |
 | My role | Board test suite, performance measurement, verification of simulation and synthesis results |
 | Stack | VHDL, Tcl, C++, Vivado/Vitis 2020.1, ZedBoard |
-| Report | [Lab 3 report (PDF)](report/lab3_report_06.pdf) |
+| Deliverables | [Lab 3 report (PDF)](submission/lab3_report_06.pdf) · [Source archive (zip)](submission/lab3_src_06.zip) · [Source folder](submission/lab3_src_06) |
 | Next lab | [Lab 5 — hardware integration](https://github.com/devjwk/cpre487lab5) |
 
 ## Overview
@@ -42,23 +40,11 @@ A convolution output pixel is a sum of products plus a bias. This lab builds the
 
 ## Where this lab fits
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#0F766E", "primaryTextColor": "#ffffff", "primaryBorderColor": "#042F2E", "lineColor": "#94A3B8", "secondaryColor": "#0F766E", "tertiaryColor": "#042F2E", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
-flowchart LR
-    L1["Lab 1 · Train in TensorFlow"] --> L2["Lab 2 · C++ framework"] --> L3["Lab 3 · MAC units"] --> L4["Lab 4 · Quantization"] --> L5["Lab 5 · Hardware integration"]
-    style L3 fill:#5EEAD4,color:#0B1220,stroke:#042F2E
-```
+<img src="assets/lab_flow.svg" alt="Lab 1 · Train in TensorFlow → Lab 2 · C++ framework → Lab 3 · MAC units → Lab 4 · Quantization → Lab 5 · Hardware integration" width="100%">
 
 ## `staged_mac` control
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#0F766E", "primaryTextColor": "#ffffff", "primaryBorderColor": "#042F2E", "lineColor": "#94A3B8", "secondaryColor": "#0F766E", "tertiaryColor": "#042F2E", "clusterBkg": "#F8FAFC", "clusterBorder": "#94A3B8", "edgeLabelBackground": "#F1F5F9", "fontFamily": "ui-sans-serif, system-ui, sans-serif"}}}%%
-stateDiagram-v2
-    [*] --> WAIT_FOR_VALUES
-    WAIT_FOR_VALUES --> WAIT_FOR_VALUES: TVALID · TUSER loads bias, otherwise acc += a × w
-    WAIT_FOR_VALUES --> SEND_RESULT: TLAST
-    SEND_RESULT --> WAIT_FOR_VALUES: TREADY · clear accumulator
-```
+<img src="assets/staged_mac_states.svg" alt="staged_mac state machine: WAIT_FOR_VALUES accumulates a times w for each valid pair and moves to SEND_RESULT on TLAST; SEND_RESULT returns when the result is accepted and clears the accumulator" width="100%">
 
 Input is accepted only in `WAIT_FOR_VALUES`, so no pair can arrive while a result is still being sent.
 
@@ -91,27 +77,56 @@ Zach wrote most of the MAC VHDL and the ILA debug setup.
 
 ## Results
 
+Every row was produced again on October 7, 2026 on a lab PC with Vivado/Vitis 2020.1 and a ZedBoard; the numbers match the September report exactly. Logs are in [`results/`](results).
+
 | | `staged_mac` | `piped_mac` |
 |---|---|---|
-| Simulation | 12/12 tests pass | tests pass |
-| On-board tests | 8/8 pass | — |
+| Simulation | 12 / 12 pass | 13 / 13 pass |
+| Setup slack (WNS) at 200 MHz | +0.834 ns → 240.0 MHz | +0.511 ns → 222.8 MHz |
+| Critical path | `state_reg` → `acc_reg[5]` | inside the DSP48E1 |
 | LUTs / registers / DSPs | 118 / 41 / 0 | 41 / 138 / 1 |
-| Setup slack (WNS) | +0.834 ns | +0.511 ns |
+| Estimated throughput on conv1 | 236.9 M MACs/s | 222.8 M MACs/s |
+| On-board test | 8 / 8 pass | not integrated on the board |
 
-Measured on the board, one group of 75 MACs takes 16.6 µs, about 4.5 M MACs/s.
+**On the board** (`staged_mac` behind an AXI-Stream FIFO, driven from C++): 8 of 8 tests match a software reference, and one group of 75 MACs takes 16.57 µs, about 4.53 M MACs/s.
+
+- **Pipelining did not raise throughput here.** It removes one idle cycle per group, worth 1.3% at 75 MACs per group, but the extra registers lower the clock by 7%.
+- **The measured rate is 50 times below the estimate** because each operand pair is a separate memory-mapped write with polling.
 
 ## Limitations and next steps
 
 - Measured throughput is far below the synthesis estimate (about 237 M MACs/s) because each word is written through memory-mapped I/O with polling. A DMA stream is needed to get close to it.
 - At 4.5 M MACs/s the unit is slower than the ZedBoard's own CPU (about 58 M MACs/s), so it does not speed up inference yet.
 - Operands are fixed at 8 bits. Lab 5 adds 4-bit and 2-bit variants.
+- The bias-load path (`TUSER`) is covered in simulation only; the AXI FIFO on the board cannot drive `TUSER`.
+- The ILA capture in the report is from September and was not taken again in the re-run.
+- Both timing reports show a pulse-width violation (WPWS −0.450 ns) on the 200 MHz test clock, as noted in the report.
 
 ## Repository layout
 
+<details>
+<summary>Folders, and how to re-run each check</summary>
+
 ```
-staged_mac/, piped_mac/   VHDL, testbenches, Vivado scripts and reports
-software_testing/         on-board test program
-simple_interface/         block design with the AXI FIFO and ILA
-testresult3.3.1           recorded test output
+staged_mac/, piped_mac/   VHDL, testbenches, Vivado scripts, timing and utilization reports
+software_testing/         on-board test program (src/main.cpp) and Vitis scripts
+simple_interface/         block design with the AXI FIFO and ILA, exported hardware (.xsa)
+results/                  simulation log from September; logs of the October 7 re-run
+submission/               report PDF and source in the layout the handout asks for
+report/                   report PDF
 lab6_template/            course-provided template for a later lab
 ```
+
+```bash
+# simulation (prints one PASS line per test) and synthesis, from <unit>/vivado
+vivado -mode batch -source run_tests.tcl
+vivado -mode batch -source run_synth.tcl      # rewrites timing_summary.rpt and utilization.rpt
+
+# on-board test, from software_testing (ZedBoard connected)
+./scripts/create_vitis -xsa_path ../simple_interface/vivado/simple_interface/staged_mac_bd_wrapper.xsa
+./scripts/flash_vitis                          # Ctrl-C after the output ends
+
+./make_submission.sh                           # rebuilds submission/ from tracked files
+```
+
+</details>

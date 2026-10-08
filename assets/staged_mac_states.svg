@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 270" role="img" aria-label="staged_mac state machine: WAIT_FOR_VALUES and SEND_RESULT">
+<title>staged_mac control</title>
+<style>.a{font:700 16px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.b{font:500 13px ui-sans-serif,system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#334155}</style>
+<defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker></defs>
+<rect x="230" y="90" width="270" height="70" fill="#0F766E"/><text x="365" y="131" text-anchor="middle" class="a" fill="#ffffff">WAIT_FOR_VALUES</text>
+<rect x="760" y="90" width="230" height="70" fill="#5EEAD4"/><text x="875" y="131" text-anchor="middle" class="a" fill="#0B1220">SEND_RESULT</text>
+<line x1="120" y1="125" x2="224" y2="125" stroke="#475569" stroke-width="2" marker-end="url(#h)"/><text x="120" y="112" class="b">reset</text>
+<path d="M500 108 L754 108" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#h)"/><text x="627" y="98" text-anchor="middle" class="b">last pair of the group (TLAST)</text>
+<path d="M760 142 L506 142" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#h)"/><text x="627" y="186" text-anchor="middle" class="b">result accepted (TREADY): clear accumulator</text>
+<path d="M300 90 C300 30 430 30 430 84" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#h)"/><text x="365" y="28" text-anchor="middle" class="b">each valid pair: acc += a × w   (first beat with TUSER loads the bias)</text>
+<text x="365" y="232" text-anchor="middle" class="b">input is accepted only in this state</text>
+<text x="875" y="232" text-anchor="middle" class="b">the 32-bit sum is held on the output</text>
+</svg>
